@@ -1,0 +1,398 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>English Path A1 → B1</title>
+<style>
+:root{--bg:#0c0c0d;--card:rgba(23,24,26,.5);--card2:rgba(255,255,255,.09);--tx:#fff;--mut:#8a8f98;--ac:#b8f43c;--ink:#0c0c0d;--bad:#ff6b6b;--bd:#2a2c30;--b1:#6aa51b;--b2:#1d6b4f;--b3:#b8f43c;color-scheme:dark;box-sizing:border-box;padding-top:env(safe-area-inset-top,0px)}
+*{box-sizing:border-box}html{scroll-padding-top:env(safe-area-inset-top,0px)}
+body{margin:0;background:var(--bg);color:var(--tx);font:16px/1.4 system-ui,-apple-system,"Segoe UI",sans-serif}
+main{max-width:520px;margin:0 auto;padding:14px 16px calc(100px + env(safe-area-inset-bottom,0px))}
+button{font:inherit;cursor:pointer;color:var(--tx)}
+h1{font-size:1.6rem;margin:8px 0 0}h2{font-size:1.1rem;margin:20px 0 8px}
+.mut,.badge{color:var(--mut);font-size:.85rem}
+.top{display:flex;justify-content:space-between;align-items:center}
+.ic button,.ic span{background:none;border:0;font-size:1.3rem;margin-right:12px}
+.chip{display:flex;align-items:center;gap:8px;background:var(--card);border-radius:24px;padding:4px 4px 4px 14px;font-weight:700}
+.plus{width:34px;height:34px;border-radius:50%;border:0;background:var(--ac);color:var(--ink);font-size:1.3rem;font-weight:700}
+.hero{text-align:center;margin:14px 0 18px}
+@property --ang{syntax:"<angle>";inherits:false;initial-value:0deg}@keyframes rot{to{--ang:360deg}}
+.ring{width:104px;height:104px;border-radius:50%;padding:4px;margin:0 auto;background:conic-gradient(from var(--ang),#ff3b3b,#ffe03b,#3bff6a,#3bf0ff,#3b6bff,#d93bff,#ff3b3b);animation:rot 6s linear infinite}
+.ring span{display:flex;width:100%;height:100%;border-radius:50%;background:#111418;align-items:center;justify-content:center;font-size:3.2rem}
+.stats{display:flex;justify-content:space-around;margin-bottom:16px;text-align:center}
+.stats>div{flex:1;border-right:1px solid var(--bd)}.stats>div:last-child{border:0}
+.stats b{font-size:1.25rem;color:var(--tx)}.stats b i{color:var(--ac);font-style:normal}
+.week{display:flex;gap:6px;margin-bottom:14px}
+.day{flex:1;background:var(--card);border:1px solid transparent;border-radius:12px;text-align:center;padding:10px 0;color:var(--mut);font-size:.85rem}
+.day u{display:block;width:6px;height:6px;border-radius:50%;background:#444;margin:0 auto 8px}
+.day.on u{background:var(--ac)}.day.today{border-color:var(--ac);color:var(--tx)}
+.g2{display:grid;grid-template-columns:1fr 1.6fr;gap:10px;margin-bottom:10px}
+.card{background:var(--card);border-radius:18px;padding:14px;margin-bottom:10px}
+.g2 .card{margin:0}
+.streak{background:linear-gradient(120deg,var(--card),#26380f);position:relative;overflow:hidden}
+.streak .tr{position:absolute;right:6px;top:4px;font-size:3.6rem}
+.dots{display:flex;gap:5px;margin-top:10px}.dots i{width:7px;height:7px;border-radius:50%;background:#444}.dots i.on{background:var(--ac)}
+.task{display:flex;gap:14px;align-items:center;background:linear-gradient(110deg,#6aa51b,var(--card) 45%);width:100%;text-align:left;border:0}
+.task .coin{font-size:3rem}
+.lesson{display:flex;justify-content:space-between;align-items:center;width:100%;text-align:left;border:0}
+.done{color:var(--ac);font-weight:700}
+.btn{background:var(--ac);color:var(--ink);border:0;border-radius:12px;padding:12px 18px;font-weight:700}
+.ghost{background:none;border:0;color:var(--ac);padding:6px 0}
+.ar{direction:rtl;text-align:right;color:var(--mut);font-size:.95rem;margin-top:6px}
+.word{display:flex;justify-content:space-between;gap:8px;align-items:center;border:0;border-bottom:1px solid var(--bd);padding:10px 0;background:none;width:100%;text-align:left}
+.word:last-child{border-bottom:0}
+.opt{display:block;width:100%;text-align:left;background:var(--card2);border:1px solid transparent;border-radius:12px;padding:12px;margin:8px 0}
+.opt.ok{border-color:var(--ac);background:#26380f}.opt.bad{border-color:var(--bad);background:#3a1b1b}
+.bar{height:8px;background:var(--card2);border-radius:6px;overflow:hidden;margin:6px 0 14px}
+.bar i{display:block;height:100%;background:var(--ac);transition:width .3s}
+input,select,textarea{resize:vertical;width:100%;font:inherit;padding:12px;border-radius:12px;border:1px solid var(--bd);background:var(--card2);color:var(--tx);margin:6px 0 12px}
+.avs{display:flex;flex-wrap:wrap;gap:8px;margin:6px 0 16px}
+.av{font-size:2rem;width:60px;height:60px;border-radius:50%;border:2px solid var(--bd);background:var(--card2)}.av.on{border-color:var(--ac)}
+#bg{position:fixed;inset:0;z-index:-1;overflow:hidden;pointer-events:none}
+#bg i{position:absolute;width:60vmax;height:60vmax;border-radius:50%;filter:blur(70px);opacity:.38;animation:fl 18s ease-in-out infinite alternate}
+#bg i:nth-child(1){background:var(--b1);top:-20%;left:-20%}
+#bg i:nth-child(2){background:var(--b2);bottom:-25%;right:-20%;animation-duration:24s;animation-delay:-6s}
+#bg i:nth-child(3){background:var(--b3);top:35%;left:35%;width:35vmax;height:35vmax;opacity:.22;animation-duration:30s;animation-delay:-12s}
+@keyframes fl{0%{transform:translate(0,0) scale(1)}50%{transform:translate(14vw,8vh) scale(1.25)}100%{transform:translate(-10vw,16vh) scale(.9)}}
+body.still #bg i{animation:none}
+@media (prefers-reduced-motion:reduce){#bg i{animation:none}}
+body[data-bg=blue]{--ac:#5eb0ff;--b1:#2563eb;--b2:#0ea5e9;--b3:#6366f1}
+body[data-bg=purple]{--ac:#c4a1ff;--b1:#7c3aed;--b2:#db2777;--b3:#a78bfa}
+body[data-bg=sunset]{--ac:#ffb347;--b1:#f97316;--b2:#e11d48;--b3:#fbbf24}
+.sw{width:44px;height:44px;border-radius:50%;border:3px solid var(--bd)}.sw.on{border-color:#fff}
+svg.i{width:24px;height:24px;fill:none;stroke:#b8f43c;stroke:url(#rgb);stroke-width:1.7;stroke-linecap:round;stroke-linejoin:round;vertical-align:-5px}
+.tg{display:grid;grid-template-columns:repeat(auto-fill,minmax(150px,1fr));gap:10px}
+.tile{text-align:left;border:1px solid rgba(255,255,255,.1);border-radius:20px;padding:14px;color:var(--tx);background:linear-gradient(160deg,color-mix(in srgb,var(--c) 24%,transparent),rgba(23,24,26,.5));backdrop-filter:blur(12px);-webkit-backdrop-filter:blur(12px);min-height:150px;display:flex;flex-direction:column;justify-content:space-between}
+.tile .no{width:32px;height:32px;border-radius:50%;background:var(--c);color:#0c0c0d;font-weight:800;display:flex;align-items:center;justify-content:center}
+.tile b{display:block;margin:10px 0 4px;line-height:1.2}.tile .ft{display:flex;justify-content:space-between;align-items:center;margin-top:10px}
+.lvh{display:flex;justify-content:space-between;align-items:center;margin:22px 0 10px}
+.pill{background:var(--c);color:#0c0c0d;font-weight:800;border-radius:20px;padding:4px 14px}
+.chips{display:flex;gap:8px;margin:0 0 12px}.chip2{border:1px solid var(--bd);background:var(--card);border-radius:20px;padding:6px 16px}.chip2.on{background:var(--ac);color:var(--ink);border-color:var(--ac);font-weight:700}
+details.dl summary{cursor:pointer;display:flex;justify-content:space-between;align-items:center;list-style:none}details.dl summary::-webkit-details-marker{display:none}
+.wg{display:grid;grid-template-columns:1fr 1fr;gap:8px;margin-top:12px}
+.wt{background:var(--card2);border:0;border-radius:14px;padding:10px 12px;text-align:left;display:flex;flex-direction:column;gap:2px}
+.wt b{font-size:.95rem}.wt span{color:var(--mut);direction:rtl;text-align:right;font-size:.9rem}
+svg.i.lg{width:44px;height:44px}
+svg.i.gold{stroke:#ffc400;stroke:url(#gold);stroke-width:2;width:36px;height:36px;vertical-align:middle;animation:glow 4s linear infinite}
+@keyframes glow{0%,100%{filter:drop-shadow(0 0 5px #ff3b3b)}33%{filter:drop-shadow(0 0 7px #3bff6a)}66%{filter:drop-shadow(0 0 7px #3b6bff)}}
+@media (prefers-reduced-motion:reduce){svg.i.gold{animation:none;filter:drop-shadow(0 0 5px #ffc400)}}.streak .tr svg.i{width:60px;height:60px}.top svg.i{width:26px;height:26px;vertical-align:middle}
+.card,.chip,.day{backdrop-filter:blur(12px);-webkit-backdrop-filter:blur(12px);border:1px solid rgba(255,255,255,.08)}
+nav button svg.i{width:26px;height:26px;opacity:.5;vertical-align:0}nav button.on svg.i{opacity:1;filter:drop-shadow(0 0 6px rgba(110,150,255,.8))}
+nav{backdrop-filter:blur(16px);-webkit-backdrop-filter:blur(16px);border-top:1px solid rgba(255,255,255,.1)!important;background:rgba(20,21,24,.4)!important}
+nav{position:fixed;left:0;right:0;bottom:0;background:var(--card);border-top:1px solid var(--bd);display:flex;justify-content:space-around;padding:8px 0 calc(8px + env(safe-area-inset-bottom,0px))}
+nav button{background:none;border:0;color:var(--mut);font-size:.8rem;display:flex;flex-direction:column;align-items:center;gap:2px;min-width:64px}
+nav button span{font-size:1.4rem}nav button.on{color:var(--ac)}
+</style>
+</head>
+<body>
+<svg width="0" height="0" style="position:absolute" aria-hidden="true"><defs>
+<linearGradient id="rgb" gradientUnits="userSpaceOnUse" x1="0" y1="0" x2="24" y2="24"><stop offset="0" stop-color="#ff3b3b"/><stop offset=".5" stop-color="#3bff6a"/><stop offset="1" stop-color="#3b6bff"/><animateTransform attributeName="gradientTransform" type="rotate" from="0 12 12" to="360 12 12" dur="5s" repeatCount="indefinite"/></linearGradient>
+<symbol id="ic-learn" viewBox="0 0 24 24"><path d="M4 5.5A1.5 1.5 0 0 1 5.5 4H11v15H5.5A1.5 1.5 0 0 0 4 20.5zM20 5.5A1.5 1.5 0 0 0 18.5 4H13v15h5.5a1.5 1.5 0 0 1 1.5 1.5z"/></symbol>
+<symbol id="ic-text" viewBox="0 0 24 24"><path d="M4 7V5h16v2M12 5v14M9 19h6"/></symbol>
+<symbol id="ic-exam" viewBox="0 0 24 24"><path d="M7 4h10a2 2 0 0 1 2 2v13a2 2 0 0 1-2 2H7a2 2 0 0 1-2-2V6a2 2 0 0 1 2-2zM9 3h6v3H9zM9 13l2 2 4-4"/></symbol>
+<symbol id="ic-bars" viewBox="0 0 24 24"><path d="M5 20V11M12 20V4M19 20v-6"/></symbol>
+<symbol id="ic-user" viewBox="0 0 24 24"><path d="M12 4a4 4 0 1 0 0 8 4 4 0 0 0 0-8zM4 21c0-4 4-6 8-6s8 2 8 6"/></symbol>
+<symbol id="ic-gear" viewBox="0 0 24 24"><path d="M12 9a3 3 0 1 0 0 6 3 3 0 0 0 0-6zM12 2v3M12 19v3M2 12h3M19 12h3M4.9 4.9l2.1 2.1M17 17l2.1 2.1M4.9 19.1L7 17M17 7l2.1-2.1"/></symbol>
+<symbol id="ic-bell" viewBox="0 0 24 24"><path d="M6 16v-5a6 6 0 0 1 12 0v5l2 2H4zM10 21h4"/></symbol>
+<symbol id="ic-vol" viewBox="0 0 24 24"><path d="M4 9v6h4l5 4V5L8 9zM16 9a4 4 0 0 1 0 6"/></symbol>
+<symbol id="ic-spark" viewBox="0 0 24 24"><path d="M12 3l2 6 6 2-6 2-2 6-2-6-6-2 6-2z"/></symbol>
+<symbol id="ic-pal" viewBox="0 0 24 24"><path d="M12 3a9 9 0 1 0 0 18c1.5 0 2-1 1.5-2s0-2 1.5-2h2a4 4 0 0 0 4-4c0-5-4-10-9-10zM8 11h.1M12 7.5h.1M16 11h.1"/></symbol>
+<symbol id="ic-trophy" viewBox="0 0 24 24"><path d="M8 4h8v6a4 4 0 0 1-8 0zM8 6H4v1a4 4 0 0 0 4 4M16 6h4v1a4 4 0 0 1-4 4M12 14v4M8 20h8"/></symbol>
+<symbol id="ic-target" viewBox="0 0 24 24"><path d="M12 3a9 9 0 1 0 0 18 9 9 0 0 0 0-18zM12 7a5 5 0 1 0 0 10 5 5 0 0 0 0-10zM12 11a1 1 0 1 0 0 2 1 1 0 0 0 0-2z"/></symbol>
+<symbol id="ic-cal" viewBox="0 0 24 24"><path d="M6 5h12a2 2 0 0 1 2 2v12a2 2 0 0 1-2 2H6a2 2 0 0 1-2-2V7a2 2 0 0 1 2-2zM4 10h16M8 3v4M16 3v4"/></symbol>
+<symbol id="ic-star" viewBox="0 0 24 24"><path d="M12 3l2.7 5.6 6.1.9-4.4 4.3 1 6.1L12 17l-5.4 2.9 1-6.1L3.2 9.5l6.1-.9z"/></symbol>
+<linearGradient id="gold" gradientUnits="userSpaceOnUse" x1="0" y1="0" x2="24" y2="24"><stop offset="0" stop-color="#fff1a8"/><stop offset=".5" stop-color="#ffc400"/><stop offset="1" stop-color="#b8860b"/></linearGradient>
+<symbol id="ic-play" viewBox="0 0 24 24"><path d="M12 3a9 9 0 1 0 0 18 9 9 0 0 0 0-18zM10 8.5l6 3.5-6 3.5z"/></symbol>
+<symbol id="ic-lock" viewBox="0 0 24 24"><path d="M7 11h10a2 2 0 0 1 2 2v6a2 2 0 0 1-2 2H7a2 2 0 0 1-2-2v-6a2 2 0 0 1 2-2zM8 11V8a4 4 0 0 1 8 0v3"/></symbol>
+</defs></svg>
+<div id="bg"><i></i><i></i><i></i></div>
+<main id="app"></main>
+<nav id="nav" style="display:none">
+<button data-t="learn" onclick="go('learn')"><svg class="i"><use href="#ic-learn"/></svg>Learn</button>
+<button data-t="words" onclick="go('words')"><svg class="i"><use href="#ic-text"/></svg>Words</button>
+<button data-t="exam" onclick="go('exam')"><svg class="i"><use href="#ic-exam"/></svg>Exam</button>
+<button data-t="stats" onclick="go('stats')"><svg class="i"><use href="#ic-bars"/></svg>Stats</button>
+<button data-t="profile" onclick="go('profile')"><svg class="i"><use href="#ic-user"/></svg>Profile</button>
+</nav>
+<script>
+var L=[
+{lv:"A1",t:"Hello & To Be",en:"Use am / is / are. I am, you are, he/she/it is, we/you/they are. Add not to make a negative: I am not.",ar:"نستخدم am مع I، و is مع he/she/it، و are مع you/we/they. للنفي نضيف not.",
+w:[["hello","مرحبا"],["name","اسم"],["student","طالب"],["from","من"],["happy","سعيد"]],
+q:[["She ___ a student.",["am","is","are"],1],["I ___ from Morocco.",["am","is","are"],0],["They ___ happy.",["is","am","are"],2]]},
+{lv:"A1",t:"Family & Have/Has",en:"Use have with I/you/we/they and has with he/she/it. I have a sister. He has a brother.",ar:"نستخدم have مع I/you/we/they و has مع he/she/it.",
+w:[["mother","أم"],["father","أب"],["brother","أخ"],["sister","أخت"],["family","عائلة"]],
+q:[["He ___ two sisters.",["have","has","is"],1],["We ___ a big family.",["has","have","are"],1],["I ___ a brother.",["has","have","am"],1]]},
+{lv:"A1",t:"Daily Routine",en:"Present simple: use the base verb. For he/she/it add -s. I wake up at 7. She wakes up at 8.",ar:"المضارع البسيط: الفعل كما هو، ومع he/she/it نضيف s.",
+w:[["wake up","يستيقظ"],["eat","يأكل"],["work","يعمل"],["sleep","ينام"],["every day","كل يوم"]],
+q:[["She ___ at 8 every day.",["work","works","working"],1],["I ___ breakfast at home.",["eat","eats","eating"],0],["He ___ late.",["sleep","sleeps","sleeping"],1]]},
+{lv:"A2",t:"Past Simple",en:"For finished actions, add -ed to regular verbs: I played. Some verbs are irregular: go → went, eat → ate. Questions use did + base verb.",ar:"الماضي البسيط: نضيف ed للأفعال المنتظمة. وبعض الأفعال شاذة مثل go → went. والسؤال بـ did + الفعل الأصلي.",
+w:[["yesterday","أمس"],["went","ذهب"],["bought","اشترى"],["visited","زار"],["last week","الأسبوع الماضي"]],
+q:[["Yesterday I ___ to school.",["go","went","going"],1],["Did you ___ the movie?",["watched","watch","watching"],1],["She ___ a new phone last week.",["buy","buys","bought"],2]]},
+{lv:"A2",t:"Future: Will & Going to",en:"Use will for quick decisions and predictions: I will help you. Use going to for plans: I am going to travel next month.",ar:"will للقرارات السريعة والتوقعات، و going to للخطط المسبقة.",
+w:[["tomorrow","غدا"],["plan","خطة"],["travel","يسافر"],["next month","الشهر القادم"],["maybe","ربما"]],
+q:[["I ___ travel next month. (plan)",["will","am going to","went"],1],["The phone is ringing. I ___ answer it.",["will","am going to","answered"],0],["They ___ visit us tomorrow.",["is going to","are going to","goes to"],1]]},
+{lv:"B1",t:"Present Perfect",en:"Use have/has + past participle for experience or recent results: I have visited Paris. She has finished her work. Use for / since for duration.",ar:"المضارع التام: have/has + التصريف الثالث للفعل. نستخدمه للتجارب والنتائج الحالية.",
+w:[["already","بالفعل"],["never","أبدا"],["ever","في أي وقت"],["since","منذ"],["experience","تجربة"]],
+q:[["I ___ never eaten sushi.",["has","have","am"],1],["She ___ lived here since 2020.",["has","have","is"],0],["Have you ___ to London?",["been","be","was"],0]]},
+{lv:"A1",t:"Articles & Plurals",en:"Use a before consonant sounds and an before vowel sounds: a book, an apple. Add -s for plurals: book → books. Add -es after s, sh, ch, x: box → boxes.",ar:"نستخدم a قبل الحروف الساكنة و an قبل حروف العلة. للجمع نضيف s أو es.",
+w:[["book","كتاب"],["apple","تفاحة"],["box","صندوق"],["bag","حقيبة"],["egg","بيضة"]],
+q:[["I have ___ apple.",["a","an","the"],1],["Two ___ are on the table.",["box","boxes","boxs"],1],["She has ___ car.",["a","an","two"],0]]},
+{lv:"A1",t:"Question Words",en:"What = thing, Where = place, Who = person, When = time, Why = reason. Put the question word first: Where do you live? What is your name?",ar:"What للأشياء، Where للمكان، Who للشخص، When للوقت، Why للسبب. نضع كلمة السؤال في البداية.",
+w:[["what","ماذا"],["where","أين"],["who","من"],["when","متى"],["why","لماذا"]],
+q:[["___ do you live? In Casablanca.",["Who","Where","When"],1],["___ is your teacher? Mr. Ali.",["Who","Where","Why"],0],["___ is your birthday? In May.",["What","When","Where"],1]]},
+{lv:"A1",t:"Can & Can’t",en:"Use can + base verb for ability: I can swim. Negative: cannot or can’t. No -s with he/she: She can swim. Question: Can you help me?",ar:"can تعبر عن القدرة، ولا نضيف s مع he/she. النفي can’t والسؤال Can you...?",
+w:[["swim","يسبح"],["cook","يطبخ"],["drive","يقود"],["speak","يتحدث"],["help","يساعد"]],
+q:[["She ___ speak English.",["can","cans","can to"],0],["I ___ drive. I am too young.",["can","can’t","cans"],1],["___ you help me?",["Can","Are","Do"],0]]},
+{lv:"A1",t:"There is / There are",en:"There is + one thing. There are + many things. Use this/these for near things and that/those for far things.",ar:"There is لشيء واحد، و There are لأشياء كثيرة. this/these للقريب و that/those للبعيد.",
+w:[["near","قريب"],["far","بعيد"],["room","غرفة"],["table","طاولة"],["window","نافذة"]],
+q:[["There ___ two chairs.",["is","are","am"],1],["___ is my book. (in my hand)",["This","That","These"],0],["There ___ a window.",["is","are","be"],0]]},
+{lv:"A2",t:"Comparatives",en:"Short adjectives add -er: tall → taller. Long adjectives use more: more expensive. Use than: She is taller than me. Superlatives: the tallest, the most expensive.",ar:"الصفات القصيرة نضيف er، والطويلة نستخدم more. للتفضيل المطلق: the + est أو the most.",
+w:[["bigger","أكبر"],["cheaper","أرخص"],["expensive","غالي"],["better","أفضل"],["worse","أسوأ"]],
+q:[["My brother is ___ than me.",["tall","taller","tallest"],1],["This phone is ___ expensive than that one.",["more","most","much"],0],["She is the ___ student in class.",["smart","smarter","smartest"],2]]},
+{lv:"A2",t:"Present Continuous",en:"Use am/is/are + verb-ing for actions happening now: I am studying. They are playing. Time words: now, right now, at the moment.",ar:"المضارع المستمر: am/is/are + الفعل مع ing للأفعال التي تحدث الآن.",
+w:[["now","الآن"],["right now","في هذه اللحظة"],["listen","يستمع"],["watch","يشاهد"],["study","يدرس"]],
+q:[["She is ___ now.",["reads","reading","read"],1],["They ___ playing football.",["is","are","am"],1],["I am ___ English.",["study","studies","studying"],2]]},
+{lv:"A2",t:"Should & Must",en:"should = advice. must = strong necessity. mustn’t = it is forbidden. Use the base verb after them: You should rest. You must wear a seat belt.",ar:"should للنصيحة، must للضرورة، mustn’t للمنع. بعدها الفعل الأصلي.",
+w:[["advice","نصيحة"],["rule","قاعدة"],["healthy","صحي"],["safe","آمن"],["careful","حذر"]],
+q:[["You ___ drink more water. (advice)",["should","mustn’t","did"],0],["You ___ stop at a red light.",["should","must","can"],1],["You ___ use your phone here. It is forbidden.",["mustn’t","should","can"],0]]},
+{lv:"A2",t:"Much, Many & A lot of",en:"many + countable things: many books. much + uncountable things: much water. We use much/many in questions and negatives. A lot of works for both.",ar:"many مع ما يعد، و much مع ما لا يعد. و a lot of تصلح للاثنين.",
+w:[["water","ماء"],["money","مال"],["time","وقت"],["people","ناس"],["enough","كاف"]],
+q:[["How ___ money do you have?",["many","much","few"],1],["There aren’t ___ chairs.",["much","many","a little"],1],["I have a ___ of friends.",["lot","much","many"],0]]},
+{lv:"B1",t:"First Conditional",en:"If + present simple, will + base verb: If it rains, I will stay home. Use it for real, possible future situations. unless = if not.",ar:"الشرط الأول: If + مضارع بسيط، will + الفعل الأصلي. للمواقف الممكنة في المستقبل.",
+w:[["if","إذا"],["unless","ما لم"],["weather","الطقس"],["probably","على الأرجح"],["result","نتيجة"]],
+q:[["If I study, I ___ pass.",["will","would","passed"],0],["If she ___ early, she will catch the bus.",["leaves","left","will leave"],0],["We will go out ___ it rains.",["if","unless","when"],1]]},
+{lv:"B1",t:"Passive Voice",en:"Use be + past participle: The book was written by Ali. English is spoken worldwide. Use the passive when the action is more important than who did it.",ar:"المبني للمجهول: be + التصريف الثالث للفعل. نستخدمه عندما يهمنا الفعل أكثر من الفاعل.",
+w:[["built","بُني"],["written","مكتوب"],["invented","اخترع"],["discovered","اكتشف"],["made","صنع"]],
+q:[["English ___ spoken worldwide.",["is","does","has"],0],["The window ___ broken yesterday.",["is","was","were"],1],["These cars ___ made in Japan.",["is","are","be"],1]]},
+{lv:"B1",t:"Used to",en:"used to + base verb = a past habit that is not true now: I used to play football every day. Negative and questions: didn’t use to / Did you use to...?",ar:"used to للعادات في الماضي التي توقفت. بعدها الفعل الأصلي.",
+w:[["habit","عادة"],["childhood","الطفولة"],["anymore","لم يعد"],["often","غالبا"],["change","تغيير"]],
+q:[["I ___ live in a village.",["use to","used to","using to"],1],["She didn’t ___ like fish.",["used to","use to","uses to"],1],["We ___ play outside every day.",["used to","are used","use"],0]]},
+{lv:"B1",t:"Second Conditional",en:"If + past simple, would + base verb for unreal or imaginary situations: If I had a million dollars, I would travel the world.",ar:"الشرط الثاني: If + ماضي بسيط، would + الفعل الأصلي. للمواقف الخيالية أو غير الواقعية.",
+w:[["imagine","يتخيل"],["dream","حلم"],["million","مليون"],["travel","يسافر"],["wish","يتمنى"]],
+q:[["If I ___ rich, I would buy a house.",["am","were","will be"],1],["She ___ help you if she had time.",["would","will","did"],0],["If we ___ more time, we would stay.",["have","had","will have"],1]]},
+{lv:"A1",t:"Writing: Capitals & Full Stops",en:"Start every sentence with a capital letter and end it with a full stop (.). Use capitals for I, names, days and months: My name is Sara. I study on Monday.",ar:"ابدأ كل جملة بحرف كبير وانهها بنقطة. استخدم الحرف الكبير مع I والأسماء والأيام والشهور.",
+w:[["sentence","جملة"],["capital","حرف كبير"],["full stop","نقطة"],["comma","فاصلة"],["word","كلمة"]],
+q:[["Which sentence is correct?",["my name is sara.","My name is Sara.","my name is Sara"],1],["Which day is written correctly?",["monday","Monday","monDay"],1],["A sentence ends with a ___.",["comma","full stop","capital"],1]],
+wr:{p:"Write 3 sentences about yourself. Example: My name is Sara. I am from Morocco. I like music.",m:10,r:[]}},
+{lv:"A1",t:"Writing About Yourself",en:"Use short sentences with I am, I have, I like and I live in. Join two ideas with and. Example: I am Sara and I am 20. I live in Casablanca. I like music and football.",ar:"استخدم جملا قصيرة مع I am و I like و I live in. اربط فكرتين بـ and.",
+w:[["introduce","يقدم"],["hobby","هواية"],["favorite","مفضل"],["live","يسكن"],["address","عنوان"]],
+q:[["I ___ in Casablanca.",["live","lives","living"],0],["I like music ___ football.",["but","and","so"],1],["My ___ is reading. (activity you enjoy)",["address","hobby","title"],1]],
+wr:{p:"Write about yourself: your name, age, city and one hobby (at least 25 words). Use I am and I like.",m:25,r:[["I am","i am"],["I like or I love","i (like|love)"]]}},
+{lv:"A2",t:"Writing: Linking Words",en:"Use and to add, but to contrast, because to give a reason, and so to show a result. I was tired, so I slept. I like tea but I don’t like coffee. I stayed home because it was raining.",ar:"and للإضافة، but للتضاد، because للسبب، so للنتيجة.",
+w:[["because","لأن"],["but","لكن"],["so","لذلك"],["also","أيضا"],["then","ثم"]],
+q:[["I stayed home ___ it was raining.",["but","because","so"],1],["I was tired, ___ I went to bed.",["because","so","but"],1],["She is clever ___ lazy.",["so","and","but"],2]],
+wr:{p:"Write about your day (at least 15 words). Use because, but and so.",m:15,r:[["because","because"],["but","(^|[^a-z])but([^a-z]|$)"],["so","(^|[^a-z])so([^a-z]|$)"]]}},
+{lv:"A2",t:"Writing an Email",en:"Start with Dear + name. Say the reason in the first line. End with Best wishes or Kind regards, then your name. Example: Dear Ali, I am writing to ask about the class. Best wishes, Sara.",ar:"ابدأ بـ Dear + الاسم، واذكر السبب في السطر الأول، وانهِ بـ Best wishes أو Kind regards ثم اسمك.",
+w:[["dear","عزيزي"],["subject","الموضوع"],["regards","تحياتي"],["attach","يرفق"],["message","رسالة"]],
+q:[["Start an email to Ali: ___ Ali,",["Hello to","Dear","Hi to"],1],["End a formal email with ___.",["Kind regards","See you","Bye bye"],0],["I am ___ to ask about the class.",["write","writing","wrote"],1]],
+wr:{p:"Write a short email to a friend (at least 25 words). Start with Dear and end with Best wishes or Kind regards.",m:25,r:[["Dear","^dear"],["Best wishes or Kind regards","best wishes|kind regards|regards"]]}},
+{lv:"B1",t:"Writing a Paragraph",en:"A good paragraph has a topic sentence, supporting details and a conclusion. Use linking words: First, Then, Finally. Example: Exercise is important. First, it keeps you healthy. Then, it reduces stress. Finally, it gives you energy.",ar:"الفقرة الجيدة فيها جملة رئيسية وتفاصيل وخاتمة. استخدم First و Then و Finally للترتيب.",
+w:[["topic","موضوع"],["detail","تفصيل"],["conclusion","خاتمة"],["example","مثال"],["support","يدعم"]],
+q:[["The first sentence of a paragraph is the ___ sentence.",["final","topic","random"],1],["Use ___ to give an example.",["however","finally","for example"],2],["___, I opened the book. Then, I started reading.",["Finally","First","However"],1]],
+wr:{p:"Write a paragraph (at least 40 words) about why English is important. Use First, Then and Finally.",m:40,r:[["First","first"],["Then","then"],["Finally","finally"]]}},
+{lv:"B1",t:"Writing: Your Opinion",en:"Give your opinion with In my opinion, I believe or I think. Show contrast with however or although. Give a result with therefore. Example: In my opinion, learning English is useful. However, it takes time.",ar:"للرأي: In my opinion / I believe. للتضاد: however / although. للنتيجة: therefore.",
+w:[["opinion","رأي"],["believe","يعتقد"],["however","لكن / مع ذلك"],["therefore","لذلك"],["agree","يوافق"]],
+q:[["___, learning English is useful. (your opinion)",["In my opinion","Therefore","However"],0],["It is difficult. ___, I enjoy it.",["Because","However","Therefore"],1],["She studied hard, ___ she passed.",["however","therefore","although"],1]],
+wr:{p:"Write your opinion about learning English online (at least 40 words). Use In my opinion and however.",m:40,r:[["In my opinion / I believe / I think","in my opinion|i believe|i think"],["however / although","however|although"]]}}
+];
+var X=[
+"morning|صباح;teacher|معلم;friend|صديق;nice|لطيف;country|بلد;city|مدينة;age|عمر;old|قديم;young|شاب;tired|متعب;good|جيد;bad|سيء;welcome|أهلا بك;please|من فضلك;thanks|شكرا",
+"son|ابن;daughter|ابنة;uncle|عم;aunt|عمة;cousin|ابن العم;grandmother|جدة;grandfather|جد;husband|زوج;wife|زوجة;parents|الوالدان;baby|طفل رضيع;child|طفل;house|منزل;home|بيت;love|يحب",
+"breakfast|فطور;lunch|غداء;dinner|عشاء;shower|دش;brush|يفرشي;wash|يغسل;school|مدرسة;office|مكتب;start|يبدأ;finish|ينتهي;always|دائما;usually|عادة;sometimes|أحيانا;never|أبدا;late|متأخر",
+"ago|منذ;before|قبل;after|بعد;saw|رأى;ate|أكل;took|أخذ;came|جاء;did|فعل;said|قال;met|قابل;called|اتصل;opened|فتح;closed|أغلق;lived|عاش;worked|عمل",
+"soon|قريبا;later|لاحقا;tonight|الليلة;next year|السنة القادمة;next week|الأسبوع القادم;hope|يأمل;promise|وعد;decide|يقرر;ready|جاهز;begin|يبدأ;future|مستقبل;holiday|عطلة;ticket|تذكرة;meeting|اجتماع;party|حفلة",
+"finished|أنهى;seen|رأى;done|فعل;gone|ذهب;arrived|وصل;just|للتو;yet|بعد;recently|مؤخرا;lately|في الآونة الأخيرة;so far|حتى الآن;many times|مرات كثيرة;job|وظيفة;abroad|في الخارج;learn|يتعلم;try|يحاول",
+"pen|قلم;chair|كرسي;key|مفتاح;orange|برتقالة;umbrella|مظلة;watch|ساعة يد;glass|كوب;class|فصل;dish|طبق;bus|حافلة;man|رجل;woman|امرأة;tooth|سن;foot|قدم;person|شخص",
+"which|أي;how|كيف;whose|لمن;how much|كم السعر;how many|كم عدد;how old|كم العمر;question|سؤال;answer|إجابة;ask|يسأل;reply|يرد;know|يعرف;understand|يفهم;repeat|يعيد;meaning|معنى;spell|يتهجى",
+"dance|يرقص;sing|يغني;run|يركض;jump|يقفز;write|يكتب;read|يقرأ;draw|يرسم;play|يلعب;fly|يطير;ride|يركب;lift|يرفع;carry|يحمل;open|يفتح;ability|قدرة;skill|مهارة",
+"bed|سرير;kitchen|مطبخ;bathroom|حمام;garden|حديقة;street|شارع;shop|متجر;park|حديقة عامة;bank|بنك;hospital|مستشفى;station|محطة;corner|زاوية;behind|خلف;between|بين;next to|بجانب;opposite|مقابل",
+"taller|أطول;shorter|أقصر;faster|أسرع;slower|أبطأ;older|أكبر سنا;younger|أصغر سنا;heavier|أثقل;lighter|أخف;easier|أسهل;harder|أصعب;best|الأفضل;worst|الأسوأ;same|نفس;different|مختلف;similar|مشابه",
+"wait|ينتظر;talk|يتحدث;walk|يمشي;laugh|يضحك;cry|يبكي;rain|مطر;sit|يجلس;stand|يقف;wear|يرتدي;build|يبني;drink|يشرب;meet|يلتقي;today|اليوم;currently|حاليا;shout|يصرخ",
+"health|صحة;doctor|طبيب;medicine|دواء;exercise|تمرين;rest|راحة;belt|حزام;traffic|مرور;law|قانون;danger|خطر;dangerous|خطير;allowed|مسموح;forbidden|ممنوع;obey|يطيع;necessary|ضروري;choice|خيار",
+"little|قليل;few|قليل العدد;bottle|زجاجة;cup|فنجان;bread|خبز;milk|حليب;rice|أرز;sugar|سكر;salt|ملح;coffee|قهوة;tea|شاي;juice|عصير;meat|لحم;fruit|فاكهة;vegetables|خضروات",
+"sunny|مشمس;cold|بارد;hot|حار;snow|ثلج;wind|رياح;storm|عاصفة;miss|يفوت;lose|يخسر;win|يفوز;succeed|ينجح;fail|يفشل;exam|امتحان;score|درجة;otherwise|وإلا;perhaps|ربما",
+"create|يصنع;send|يرسل;sell|يبيع;produce|ينتج;repair|يصلح;clean|ينظف;paint|يطلي;invite|يدعو;publish|ينشر;translate|يترجم;damage|ضرر;steal|يسرق;arrest|يعتقل;award|جائزة;deliver|يوصل",
+"village|قرية;neighbor|جار;toy|لعبة;grow up|يكبر;remember|يتذكر;forget|ينسى;memory|ذكرى;used|معتاد;once|ذات مرة;those days|تلك الأيام;tradition|تقليد;modern|حديث;simple|بسيط;quiet|هادئ;playground|ملعب",
+"rich|غني;poor|فقير;famous|مشهور;president|رئيس;island|جزيرة;ocean|محيط;mountain|جبل;castle|قلعة;car|سيارة;luxury|رفاهية;adventure|مغامرة;chance|فرصة;if only|ليت;suppose|افترض;idea|فكرة",
+"paper|ورقة;notebook|دفتر;letter|حرف;spelling|إملاء;mistake|خطأ;correct|صحيح;line|سطر;page|صفحة;title|عنوان;question mark|علامة استفهام;paragraph|فقرة;copy|ينسخ;check|يتحقق;handwriting|خط اليد;erase|يمحو",
+"nationality|جنسية;birthday|عيد ميلاد;language|لغة;Arabic|العربية;French|الفرنسية;English|الإنجليزية;neighborhood|حي;favorite color|لون مفضل;music|موسيقى;football|كرة القدم;reading|قراءة;cooking|طبخ;movies|أفلام;describe|يصف;personality|شخصية",
+"first|أولا;next|بعد ذلك;finally|أخيرا;after that|بعد ذلك مباشرة;for example|مثلا;or|أو;while|بينما;until|حتى;although|مع أن;instead|بدلا من;reason|سبب;result|نتيجة;connect|يربط;join|يضم;both|كلاهما",
+"inbox|صندوق الوارد;email address|عنوان البريد;sender|المرسل;receive|يستلم;formal|رسمي;informal|غير رسمي;greeting|تحية;signature|توقيع;request|طلب;invitation|دعوة;appointment|موعد;thank you|شكرا لك;sorry|آسف;wish|يتمنى;information|معلومات",
+"introduction|مقدمة;main idea|الفكرة الرئيسية;explain|يشرح;summary|ملخص;order|ترتيب;sequence|تسلسل;in addition|بالإضافة إلى;as a result|نتيجة لذلك;in conclusion|في الختام;for instance|على سبيل المثال;clear|واضح;organize|ينظم;draft|مسودة;edit|يحرر;improve|يحسن",
+"disagree|لا يوافق;advantage|ميزة;disadvantage|عيب;benefit|فائدة;argue|يجادل;evidence|دليل;on the other hand|من ناحية أخرى;in fact|في الواقع;personally|شخصيا;strongly|بقوة;important|مهم;useful|مفيد;convince|يقنع;balanced|متوازن;point of view|وجهة نظر"
+];
+X.forEach(function(s,i){var l=L[i];s.split(";").forEach(function(p){var a=p.split("|");l.w.push([a[0],a[1]])});
+[5,8,10,12,14,17,19].forEach(function(ix,k){var w=l.w,c=w[ix],d=[w[(ix+3)%w.length],w[(ix+9)%w.length]],t=k%2,o=d.map(function(x){return x[t?0:1]});
+o.splice(k%3,0,c[t?0:1]);l.q.push([t?"Choose the English word: "+c[1]:"What does “"+c[0]+"” mean?",o,k%3])})});
+var S={xp:0,done:{},act:{},right:0,total:0},tab="profile";
+try{var s=localStorage.getItem("epath");if(s)S=Object.assign(S,JSON.parse(s))}catch(e){}
+function save(){try{localStorage.setItem("epath",JSON.stringify(S))}catch(e){}}
+S.pf=Object.assign({bg:"lime",anim:true,sound:true},S.pf||{});
+function applyPf(){document.body.setAttribute("data-bg",S.pf.bg);document.body.classList.toggle("still",!S.pf.anim)}applyPf();
+var app=document.getElementById("app"),nav=document.getElementById("nav");
+function ic(n,c){return '<svg class="i'+(c?' '+c:'')+'"><use href="#ic-'+n+'"/></svg>'}
+function say(t){if(S.pf&&S.pf.sound===false)return;try{var u=new SpeechSynthesisUtterance(t);u.lang="en-US";u.rate=.85;speechSynthesis.cancel();speechSynthesis.speak(u)}catch(e){}}
+function esc(x){return String(x).replace(/[&<>"]/g,function(c){return {"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;"}[c]})}
+function dk(d){return d.getFullYear()+"-"+(d.getMonth()+1)+"-"+d.getDate()}
+function streak(){var d=new Date(),n=0;if(!S.act[dk(d)])d.setDate(d.getDate()-1);while(S.act[dk(d)]){n++;d.setDate(d.getDate()-1)}return n}
+function go(t){tab=t;render()}
+function render(){RS=0;nav.style.display="flex";nav.querySelectorAll("button").forEach(function(b){b.classList.toggle("on",b.dataset.t===tab)});
+if(tab==="learn")learn();else if(tab==="words")words();else if(tab==="exam")exam();else if(tab==="settings")settings();else if(tab==="stats")stats();else profile();window.scrollTo(0,0)}
+function profile(){
+var u=S.user,lvl=Math.floor(S.xp/100)+1,acc=S.total?Math.round(S.right/S.total*100):0,st=streak(),h="";
+h+='<div class="top"><div class="ic"><button onclick="go(\'settings\')">'+ic("gear")+'</button><span>'+ic("bell")+'</span></div><div class="chip">'+ic("star")+' '+S.xp+' XP<button class="plus" onclick="go(\'learn\')">+</button></div></div>';
+h+='<div class="hero"><div class="ring"><span>'+u.av+'</span></div><h1>'+esc(u.name)+'</h1><div class="mut">@'+esc(u.name.toLowerCase().replace(/\s+/g,"."))+' · Level '+u.lv+' → B1</div></div>';
+h+='<div class="stats"><div><b>'+ic("target")+' '+acc+'%</b><div class="mut">Accuracy</div></div><div><b>'+ic("bars")+' '+lvl+'</b><div class="mut">Level</div></div><div><b>'+ic("cal")+' '+st+'</b><div class="mut">Days</div></div></div>';
+var t=new Date(),dow=(t.getDay()+6)%7,names=["Mon","Tue","Wed","Thu","Fri","Sat","Sun"];h+='<div class="week">';
+for(var i=0;i<7;i++){var d=new Date(t);d.setDate(t.getDate()-dow+i);h+='<div class="day'+(S.act[dk(d)]?' on':'')+(i===dow?' today':'')+'"><u></u>'+names[i]+'<br>'+d.getDate()+'</div>'}
+h+='</div>';
+var wl=0;Object.keys(S.done).forEach(function(i){wl+=L[i].w.length});
+h+='<div class="g2"><div class="card" style="text-align:center"><div>'+ic("text","lg")+'</div><b>Words</b><div style="color:var(--ac)">'+wl+' learned</div></div>';
+h+='<div class="card streak"><span class="tr">'+ic("trophy")+'</span><b>Keep it up!</b><div class="mut" style="max-width:60%">'+(st?st+' days in a row, you are here!':'Study today to start your streak!')+'</div><div class="dots">';
+for(var j=0;j<7;j++)h+='<i class="'+(j<Math.min(st,7)?'on':'')+'"></i>';
+h+='</div></div></div>';
+h+='<button class="card task" onclick="go(\'learn\')"><span class="coin">'+ic("target","lg")+'</span><span><b>Complete new lessons</b><br><span class="mut">Get 10 bonus XP for every correct answer in your quizzes</span></span></button>';
+app.innerHTML=h}
+function lc(lv){return lv==="A1"?"#5ee08a":lv==="A2"?"#5eb0ff":"#c4a1ff"}
+function learn(){
+var n=Object.keys(S.done).length,pc=Math.round(n/L.length*100),h='<h1>Learn</h1><div class="card"><div style="display:flex;justify-content:space-between"><b>Your path to B1</b><b style="color:var(--ac)">'+pc+'%</b></div><div class="bar"><i style="width:'+pc+'%"></i></div><span class="badge">'+n+' of '+L.length+' lessons complete. Repeat the words aloud every day.</span></div>';
+["A1","A2","B1"].forEach(function(lv){var ls=[],dn=0;L.forEach(function(l,i){if(l.lv===lv){ls.push(i);if(S.done[i])dn++}});
+h+='<div class="lvh" style="--c:'+lc(lv)+'"><span class="pill">'+lv+'</span><span class="mut">'+dn+' / '+ls.length+' done</span></div><div class="tg">';
+ls.forEach(function(i,k){var l=L[i];h+='<button class="tile" style="--c:'+lc(lv)+'" onclick="open_('+i+')"><div><span class="no">'+(k+1)+'</span><b>'+esc(l.t)+'</b><span class="badge">'+l.w.length+' words · '+l.q.length+' questions'+(l.wr?' · writing':'')+'</span></div><div class="ft">'+(S.done[i]?'<span class="done">✓ '+S.done[i]+'/'+l.q.length+'</span>':'<span class="badge">Not started</span>')+ic("play","gold")+'</div></button>'});
+h+='</div>'});
+app.innerHTML=h}
+var WL="all",WQ="";
+function wlv(v){WL=v;words()}
+function wf(){WQ=document.getElementById("wq").value.toLowerCase();var q=WQ;
+document.querySelectorAll(".wt").forEach(function(t){t.style.display=(!q||t.dataset.s.indexOf(q)>-1)?"":"none"});
+document.querySelectorAll("details.dl").forEach(function(d){var vis=false;d.querySelectorAll(".wt").forEach(function(t){if(t.style.display!=="none")vis=true});d.style.display=vis?"":"none";if(q)d.open=true})}
+function words(){
+var tot=0;L.forEach(function(l){tot+=l.w.length});
+var h='<h1>Words</h1><div class="mut">'+tot+' words. Tap a word to hear it.</div><input id="wq" placeholder="Search a word or its Arabic meaning" value="'+esc(WQ)+'" oninput="wf()" style="margin-top:10px"><div class="chips">';
+["all","A1","A2","B1"].forEach(function(v){h+='<button class="chip2'+(WL===v?' on':'')+'" onclick="wlv(\''+v+'\')">'+(v==="all"?"All":v)+'</button>'});
+h+='</div>';
+L.forEach(function(l){if(WL!=="all"&&l.lv!==WL)return;
+h+='<details class="card dl" style="--c:'+lc(l.lv)+'"><summary><span><span class="pill" style="font-size:.75rem;padding:2px 10px">'+l.lv+'</span> <b>'+esc(l.t)+'</b></span><span class="mut">'+l.w.length+' words</span></summary><div class="wg">';
+l.w.forEach(function(w){h+='<button class="wt" data-s="'+esc((w[0]+' '+w[1]).toLowerCase())+'" onclick="say(\''+w[0]+'\')"><b>'+ic("vol")+' '+esc(w[0])+'</b><span>'+esc(w[1])+'</span></button>'});
+h+='</div></details>'});
+app.innerHTML=h;if(WQ)wf()}
+function open_(i){
+var l=L[i],h='<button class="ghost" onclick="render()">← Back</button><h2>'+esc(l.t)+' <span class="badge">'+l.lv+'</span></h2><div class="card"><b>Grammar</b><p>'+esc(l.en)+'</p><div class="ar">'+esc(l.ar)+'</div></div><div class="card"><b>Words</b> <span class="badge">(tap to listen)</span>';
+l.w.forEach(function(w){h+='<button class="word" onclick="say(\''+w[0]+'\')"><span>'+ic("vol")+' '+esc(w[0])+'</span><span class="ar" style="margin:0">'+esc(w[1])+'</span></button>'});
+h+='</div>'+(l.wr?'<div class="card"><b>Writing practice</b><p>'+esc(l.wr.p)+'</p><textarea id="wt" rows="5" placeholder="Write here..."></textarea><button class="btn" onclick="wcheck('+i+')">Check my writing</button><div id="wf" style="margin-top:10px"></div></div>':'')+'<button class="btn" onclick="quiz('+i+')">Start quiz</button>';
+app.innerHTML=h;window.scrollTo(0,0)}
+function wcheck(i){
+var l=L[i],t=document.getElementById("wt").value.trim(),n=t?t.split(/\s+/).length:0,ok=[];
+ok.push(["At least "+l.wr.m+" words (you wrote "+n+")",n>=l.wr.m]);
+ok.push(["Every sentence starts with a capital letter",/^[A-Z]/.test(t)&&!/[.!?]\s+[a-z]/.test(t)]);
+ok.push(["Ends with . ! or ?",/[.!?]$/.test(t)]);
+(l.wr.r||[]).forEach(function(r){ok.push(["Uses: "+r[0],new RegExp(r[1],"i").test(t)])});
+var all=ok.every(function(x){return x[1]}),h='';
+ok.forEach(function(x){h+='<div class="word" style="cursor:default"><span>'+esc(x[0])+'</span><b style="color:'+(x[1]?'var(--ac)':'var(--bad)')+'">'+(x[1]?'✓':'✗')+'</b></div>'});
+S.wrote=S.wrote||{};
+if(all&&!S.wrote[i]){S.wrote[i]=1;S.xp+=20;S.act[dk(new Date())]=(S.act[dk(new Date())]||0)+1;h+='<p class="done">Great writing! +20 XP</p>'}
+else if(all)h+='<p class="done">Great writing!</p>';
+else h+='<p class="mut">Fix the ✗ items and check again.</p>';
+save();document.getElementById("wf").innerHTML=h}
+function quiz(i,k,sc){
+k=k||0;sc=sc||0;var l=L[i];
+if(k>=l.q.length){
+if(!S.done[i]||sc>S.done[i]){S.xp+=sc*10;S.done[i]=Math.max(sc,S.done[i]||0)}save();
+app.innerHTML='<div class="card"><h2>'+(sc===l.q.length?"Perfect! 🎉":"Good work!")+'</h2><p>Score: '+sc+' / '+l.q.length+'</p><button class="btn" onclick="quiz('+i+')">Try again</button> <button class="ghost" onclick="go(\'profile\')">See my profile</button></div>';return}
+var q=l.q[k],h='<div class="bar"><i style="width:'+Math.round(k/l.q.length*100)+'%"></i></div><div class="card"><b>'+esc(q[0])+'</b><div id="o">';
+q[1].forEach(function(o,j){h+='<button class="opt" onclick="ans('+i+','+k+','+sc+','+j+')">'+esc(o)+'</button>'});
+h+='</div></div>';app.innerHTML=h}
+function ans(i,k,sc,j){
+var q=L[i].q[k];
+document.querySelectorAll(".opt").forEach(function(x,n){x.disabled=true;if(n===q[2])x.classList.add("ok");else if(n===j)x.classList.add("bad")});
+S.total++;S.act[dk(new Date())]=(S.act[dk(new Date())]||0)+1;
+if(j===q[2]){sc++;S.right++;say(q[0].replace("___",q[1][q[2]]))}
+save();
+var nb=document.createElement("button");nb.className="btn";nb.style.marginTop="10px";nb.textContent="Next";
+nb.onclick=function(){quiz(i,k+1,sc)};document.getElementById("o").appendChild(nb)}
+function tg(k){S.pf[k]=!S.pf[k];save();applyPf();settings()}
+function setBg(b){S.pf.bg=b;save();applyPf();settings()}
+var RS=0;
+function rst(){if(!RS){RS=1;settings();return}S.xp=0;S.done={};S.act={};S.right=0;S.total=0;S.exams=[];RS=0;save();go("profile")}
+function settings(){
+var u=S.user,dn=Object.keys(S.done),wl=0,tw=0,ex=S.exams||[];
+dn.forEach(function(i){wl+=L[i].w.length});L.forEach(function(l){tw+=l.w.length});
+var acc=S.total?Math.round(S.right/S.total*100):0;
+function r(a,b){return '<div class="word" style="cursor:default"><span>'+a+'</span><b>'+b+'</b></div>'}
+var h='<button class="ghost" onclick="go(\'profile\')">← Back</button><h1>Settings</h1>';
+h+='<div class="card hero" style="margin-top:12px"><div class="ring" style="width:80px;height:80px"><span style="font-size:2.4rem">'+u.av+'</span></div><b>'+esc(u.name)+'</b><div class="mut">Started at '+u.lv+' · Goal: B1</div><button class="btn" style="margin-top:10px" onclick="signup()">Edit profile</button></div>';
+h+='<h2>My details</h2><div class="card">'+r("Total XP",S.xp)+r("Level",Math.floor(S.xp/100)+1)+r("Lessons completed",dn.length+" / "+L.length)+r("Words learned",wl+" / "+tw)+r("Questions answered",S.total)+r("Accuracy",acc+"%")+r("Study days",Object.keys(S.act).length)+r("Current streak",streak()+" days")+r("Exams taken",ex.length)+r("Last exam level",ex.length?ex[ex.length-1].lv:"—")+'</div>';
+h+='<h2>Preferences</h2><div class="card"><button class="word" onclick="tg(\'sound\')"><span>'+ic("vol")+' Pronunciation sound</span><b style="color:var(--ac)">'+(S.pf.sound?"On":"Off")+'</b></button><button class="word" onclick="tg(\'anim\')"><span>'+ic("spark")+' Moving background</span><b style="color:var(--ac)">'+(S.pf.anim?"On":"Off")+'</b></button><div style="padding:12px 0 4px"><span>'+ic("pal")+' Color theme</span><div class="avs" style="margin-bottom:0">';
+[["lime","#b8f43c"],["blue","#5eb0ff"],["purple","#c4a1ff"],["sunset","#ffb347"]].forEach(function(t){h+='<button class="sw'+(S.pf.bg===t[0]?' on':'')+'" style="background:'+t[1]+'" onclick="setBg(\''+t[0]+'\')"></button>'});
+h+='</div></div></div><h2>Data</h2><div class="card"><p class="mut" style="margin-top:0">Reset your XP, lessons, streak and exam results. Your name and character stay.</p><button class="btn" style="background:'+(RS?'var(--bad)':'var(--card2)')+';color:'+(RS?'#fff':'var(--tx)')+'" onclick="rst()">'+(RS?"Tap again to confirm reset":"Reset my progress")+'</button></div>';
+h+='<h2>About</h2><div class="card">'+r("App","English Path")+r("Path","A1 → B1")+r("Lessons",L.length)+r("Words",tw)+r("Weekend exam","Sat & Sun")+'</div>';
+app.innerHTML=h;window.scrollTo(0,0)}
+function stats(){
+var t=new Date(),ex=S.exams||[],lvl=Math.floor(S.xp/100)+1,into=S.xp%100,acc=S.total?Math.round(S.right/S.total*100):0,nd=Object.keys(S.done).length,wl=0;
+Object.keys(S.done).forEach(function(i){wl+=L[i].w.length});
+var h='<h1>Statistics</h1><div class="card hero"><div class="mut">Current level</div><div style="font-size:3rem;font-weight:800;color:var(--ac)">'+(ex.length?ex[ex.length-1].lv:S.user.lv)+'</div><div class="mut">'+(ex.length?"from your last exam":"your starting level. Take the weekend exam to check it")+'</div></div>';
+h+='<div class="card"><div style="display:flex;justify-content:space-between"><b>XP level '+lvl+'</b><span class="mut">'+into+' / 100 XP</span></div><div class="bar"><i style="width:'+into+'%"></i></div>';
+["A1","A2","B1"].forEach(function(lv){var tot=0,dn=0,sc=0,qs=0;L.forEach(function(l,i){if(l.lv!==lv)return;tot++;if(S.done[i]){dn++;sc+=S.done[i];qs+=l.q.length}});
+var p=tot?Math.round(dn/tot*100):0,m=qs?Math.round(sc/qs*100):0;
+h+='<div style="display:flex;justify-content:space-between"><span>'+lv+' lessons</span><b>'+dn+' / '+tot+' · '+(qs?m+'% score':'no score yet')+'</b></div><div class="bar"><i style="width:'+p+'%"></i></div>'});
+h+='</div><div class="card"><b>Journey to B1</b><div class="bar"><i style="width:'+Math.round(nd/L.length*100)+'%"></i></div><span class="mut">'+nd+' of '+L.length+' lessons done ('+Math.round(nd/L.length*100)+'%)</span></div>';
+h+='<h2>Learning</h2><div style="display:grid;grid-template-columns:1fr 1fr;gap:10px">';
+[["Questions answered",S.total],["Accuracy",acc+"%"],["Words learned",wl],["Streak",streak()+" days"]].forEach(function(c){h+='<div class="card" style="margin:0;text-align:center"><div style="font-size:1.5rem;font-weight:800;color:var(--ac)">'+c[1]+'</div><div class="mut">'+c[0]+'</div></div>'});
+var nm=["Sun","Mon","Tue","Wed","Thu","Fri","Sat"],ds=[],mx=1;
+for(var i=6;i>=0;i--){var d=new Date(t);d.setDate(t.getDate()-i);var v=S.act[dk(d)]||0;ds.push([nm[d.getDay()],v]);if(v>mx)mx=v}
+h+='</div><h2>Last 7 days</h2><div class="card"><div style="display:flex;align-items:flex-end;gap:8px;height:120px">';
+ds.forEach(function(x){h+='<div style="flex:1;text-align:center"><div class="mut" style="font-size:.75rem">'+(x[1]||"")+'</div><div style="height:'+Math.round(x[1]/mx*80)+'px;min-height:4px;background:'+(x[1]?'var(--ac)':'var(--card2)')+';border-radius:6px"></div><div class="mut" style="font-size:.75rem">'+x[0]+'</div></div>'});
+h+='</div><div class="mut" style="margin-top:8px">Questions answered each day</div></div>';
+h+='<h2>Exam results</h2><div class="card">';
+if(!ex.length)h+='<span class="mut">No exam yet. The exam opens on Saturday and Sunday.</span>';
+ex.slice(-5).forEach(function(e){h+='<div style="display:flex;justify-content:space-between"><span>'+e.d+'</span><b>'+e.p+'% · '+e.lv+'</b></div><div class="bar"><i style="width:'+e.p+'%"></i></div>'});
+h+='</div><h2>Needs review</h2><div class="card">';
+var wk=[];L.forEach(function(l,i){if(S.done[i]&&S.done[i]/l.q.length<0.7)wk.push(l.t+' ('+Math.round(S.done[i]/l.q.length*100)+'%)')});
+h+=wk.length?wk.map(function(x){return '<div class="word" style="cursor:default">'+esc(x)+'</div>'}).join(''):'<span class="mut">'+(nd?'Great work! No lesson is below 70%.':'Finish a lesson to see what to review.')+'</span>';
+app.innerHTML=h+'</div>';window.scrollTo(0,0)}
+var EX=null;
+function exam(){
+var d=new Date().getDay(),wk=d===0||d===6,h='<h1>Weekend Exam</h1><div class="card"><b>Find out your real level</b><p class="mut">15 mixed questions: 5 from A1, 5 from A2 and 5 from B1. Your result shows your current level. No hints and no answers until the end. The exam opens every Saturday and Sunday.</p>';
+if(wk)h+='<button class="btn" onclick="exStart()">Start the exam</button>';
+else h+='<div class="done">'+ic("lock")+' Opens in '+(6-d)+' day'+(6-d>1?'s':'')+' (Saturday)</div>';
+h+='</div>';var H=S.exams||[];
+if(H.length){h+='<h2>Your results</h2>';H.slice(-5).reverse().forEach(function(e){h+='<div class="card lesson"><span>'+e.d+'<br><span class="badge">'+e.p+'% correct</span></span><b class="done">'+e.lv+'</b></div>'})}
+app.innerHTML=h}
+function exStart(){
+var qs=[];["A1","A2","B1"].forEach(function(lv){var p=[];L.forEach(function(l){if(l.lv===lv)l.q.forEach(function(q){p.push({t:q[0],o:q[1],a:q[2],lv:lv})})});p.sort(function(){return Math.random()-.5});qs=qs.concat(p.slice(0,5))});
+EX={qs:qs,k:0,sc:{A1:0,A2:0,B1:0}};exQ()}
+function exQ(){
+if(EX.k>=EX.qs.length){exEnd();return}
+var q=EX.qs[EX.k],h='<div class="mut">Question '+(EX.k+1)+' of '+EX.qs.length+'</div><div class="bar"><i style="width:'+Math.round(EX.k/EX.qs.length*100)+'%"></i></div><div class="card"><b>'+esc(q.t)+'</b>';
+q.o.forEach(function(o,j){h+='<button class="opt" onclick="exAns('+j+')">'+esc(o)+'</button>'});
+app.innerHTML=h+'</div>';window.scrollTo(0,0)}
+function exAns(j){var q=EX.qs[EX.k];S.total++;S.act[dk(new Date())]=(S.act[dk(new Date())]||0)+1;if(j===q.a){EX.sc[q.lv]++;S.right++}EX.k++;exQ()}
+function exEnd(){
+var s=EX.sc,tot=s.A1+s.A2+s.B1,p=Math.round(tot/15*100),lv="Below A1";
+if(s.A1>=3)lv="A1";if(s.A1>=3&&s.A2>=3)lv="A2";if(s.A1>=3&&s.A2>=3&&s.B1>=3)lv="B1";
+S.exams=(S.exams||[]).concat([{d:new Date().toLocaleDateString(),p:p,lv:lv}]);S.xp+=tot*5;save();
+var weak=s.A1<3?"A1":s.A2<3?"A2":s.B1<3?"B1":"";
+var tip=weak?"Next step: review the "+weak+" lessons and repeat their words aloud.":"Excellent! You reached B1. Keep reviewing every day to make it solid.";
+var h='<div class="card hero"><div class="mut">Your level</div><div style="font-size:3.5rem;font-weight:800;color:var(--ac)">'+lv+'</div><b>'+tot+' / 15 correct ('+p+'%)</b><div class="mut">+'+tot*5+' XP</div></div><div class="card">';
+["A1","A2","B1"].forEach(function(k){h+='<div style="display:flex;justify-content:space-between"><span>'+k+'</span><b>'+s[k]+' / 5</b></div><div class="bar"><i style="width:'+s[k]*20+'%"></i></div>'});
+h+='<p class="mut">'+tip+' A level counts when you get at least 3 of 5 right.</p></div><button class="btn" onclick="go(\'learn\')">Go to lessons</button> <button class="ghost" onclick="go(\'exam\')">Back to exam</button>';
+app.innerHTML=h;window.scrollTo(0,0)}
+var AV=["🦊","🐼","🦁","🐯","🐸","🦉"],PA=AV[0];
+function pickAv(a){PA=a;document.querySelectorAll(".av").forEach(function(b){b.classList.toggle("on",b.textContent===a)})}
+function signup(){
+PA=S.user?S.user.av:AV[0];var u=S.user||{name:"",lv:"A1"};nav.style.display="none";
+var h='<div class="card"><h2 style="margin-top:0">Welcome! Create your account</h2><div class="ar">أهلا بك! أنشئ حسابك</div><label>Your name<input id="nm" maxlength="20" placeholder="e.g. Sara" value="'+esc(u.name)+'"></label><label>Your level now<select id="lv">';
+["A1","A2"].forEach(function(v){h+='<option'+(u.lv===v?' selected':'')+'>'+v+'</option>'});
+h+='</select></label><b>Choose your character</b><div class="avs">';
+AV.forEach(function(a){h+='<button class="av'+(a===PA?' on':'')+'" onclick="pickAv(\''+a+'\')">'+a+'</button>'});
+h+='</div><button class="btn" onclick="reg()">Start learning</button></div>';
+app.innerHTML=h}
+function reg(){
+var nm=document.getElementById("nm").value.trim();
+if(!nm){document.getElementById("nm").focus();return}
+S.user={name:nm,av:PA,lv:document.getElementById("lv").value};save();go("profile")}
+if(S.user)render();else signup();
+</script>
+</body>
+</html>
